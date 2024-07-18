@@ -238,4 +238,24 @@ describe('Test Queryable class', () => {
 
     expect(result?.name).toEqual("Jack");
   });
+
+  it('testing lastOrDefault query', () => {
+    const data = [
+      { id: 1, name: 'Alice', age: 30 },
+      { id: 2, name: 'Bob', age: 25 },
+      { id: 3, name: 'Charlie', age: 35 },
+      { id: 4, name: 'Alice', age: 28 },
+    ];
+
+    const queryable = new Queryable(data);
+
+    const result = queryable
+      .lastOrDefault(person => person.id === 5, {
+        id: 5,
+        name: "Jack",
+        age: 60
+      });
+
+    expect(result?.name).toEqual("Jackk");
+  });
 });
