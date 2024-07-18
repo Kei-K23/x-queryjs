@@ -50,10 +50,10 @@ export default class Queryable<T> {
     }
 
     /**
-       * Sorts the elements of a collection in descending order according to a key.
-       * @param keySelector - A function to extract a key from an element.
-       * @returns A new Queryable collection of sorted elements.
-       */
+    * Sorts the elements of a collection in descending order according to a key.
+    * @param keySelector - A function to extract a key from an element.
+    * @returns A new Queryable collection of sorted elements.
+    */
     orderByDescending<U>(keySelector: Selector<T, U>): Queryable<T> {
         return new Queryable<T>([...this.collection].sort((a, b) => {
             const keyA = keySelector(a);
@@ -63,10 +63,10 @@ export default class Queryable<T> {
     }
 
     /**
-     * Groups the elements of a collection according to a specified key selector function.
-     * @param keySelector - A function to extract the key for each element.
-     * @returns An object where the keys are the group keys and the values are arrays of elements.
-     */
+    * Groups the elements of a collection according to a specified key selector function.
+    * @param keySelector - A function to extract the key for each element.
+    * @returns An object where the keys are the group keys and the values are arrays of elements.
+    */
     groupBy<U extends string | number>(keySelector: Selector<T, U>): Record<U, T[]> {
         return this.collection.reduce((groups, item) => {
             const key = keySelector(item);
@@ -173,21 +173,21 @@ export default class Queryable<T> {
     }
 
     /**
-         * Returns the first element of a sequence that satisfies a specified condition or the first element if no condition is specified, or a default value if no such element is found.
-         * @param predicate - A function to test each element for a condition.
-         * @param defaultValue - The value to return if no element is found. Defaults to null.
-         * @returns The first element in the collection that passes the test in the specified predicate function or the default value if no such element is found.
-         */
+    * Returns the first element of a sequence that satisfies a specified condition or the first element if no condition is specified, or a default value if no such element is found.
+    * @param predicate - A function to test each element for a condition.
+    * @param defaultValue - The value to return if no element is found. Defaults to null.
+    * @returns The first element in the collection that passes the test in the specified predicate function or the default value if no such element is found.
+    */
     firstOrDefault(predicate?: Predicate<T>, defaultValue: T | null = null): T | null {
         const item = predicate ? this.collection.find(predicate) : this.collection[0];
         return item !== undefined ? item : defaultValue;
     }
 
     /**
-      * Returns the last element of a sequence that satisfies a specified condition or the last element if no condition is specified.
-      * @param predicate - A function to test each element for a condition.
-      * @returns The last element in the collection that passes the test in the specified predicate function or undefined if no such element is found.
-      */
+    * Returns the last element of a sequence that satisfies a specified condition or the last element if no condition is specified.
+    * @param predicate - A function to test each element for a condition.
+    * @returns The last element in the collection that passes the test in the specified predicate function or undefined if no such element is found.
+    */
     last(predicate?: Predicate<T>): T | undefined {
         if (predicate) {
             return [...this.collection].reverse().find(predicate);
