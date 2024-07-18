@@ -1,6 +1,6 @@
-# Queryjs
+# X-Queryjs
 
-`Queryjs` is utility `JavaScript` library that is fully type safety, zero-dependencies and mimics the functionality and chaining capabilities of C# LINQ, allowing you to work with collections in a similar and more effective way.
+`X-Queryjs` is utility `JavaScript` library that is fully type safety, zero-dependencies and mimics the functionality and chaining capabilities of C# LINQ, allowing you to work with collections in a similar and more effective way.
 
 ## Examples
 
